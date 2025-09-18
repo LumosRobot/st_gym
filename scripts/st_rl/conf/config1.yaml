@@ -1,0 +1,17 @@
+agent:
+  logger: tensorboard
+  max_iterations: 2000
+env:
+  rewards:
+    action_rate_l2:
+      weight: -0.03458467430235029
+    dof_pos_limits:
+      weight: -1.2378982600893726
+    track_lower_joint_pos_exp:
+      params:
+        std: 0.7383447843424594
+      weight: 1.148291992291191
+    track_upper_joint_pos_exp:
+      params:
+        std: 0.9760722330755026
+      weight: 3.8219780598210362

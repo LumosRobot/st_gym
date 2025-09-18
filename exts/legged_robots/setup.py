@@ -1,24 +1,19 @@
 """Installation script for the 'legged_robots' python package."""
 
 import os
+import toml
+
 from setuptools import setup
 
 # Obtain the extension data from the extension.toml file
 EXTENSION_PATH = os.path.dirname(os.path.realpath(__file__))
-
-# Lazy import toml to avoid ImportError before installation
-def load_extension_data():
-    import toml
-    return toml.load(os.path.join(EXTENSION_PATH, "config", "extension.toml"))
-
-EXTENSION_TOML_DATA = load_extension_data()
+# Read the extension.toml file
+EXTENSION_TOML_DATA = toml.load(os.path.join(EXTENSION_PATH, "config", "extension.toml"))
 
 # Minimum dependencies required prior to installation
 INSTALL_REQUIRES = [
+    # NOTE: Add dependencies
     "psutil",
-    "toml",          # required to parse extension.toml
-    "tensordict",    # PyTorch TensorDict library
-    "torchrl",       # Reinforcement Learning extensions for PyTorch
 ]
 
 # Installation operation
