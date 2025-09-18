@@ -276,13 +276,13 @@ Lus2_CFG = ArticulationCfg(
 )
 
 Lus2_Joint25_CFG = Lus2_CFG.copy()
-Lus2_Joint25_CFG.spawn.usd_path = f"{usd_dir_path}/robots/lus2/usd/lus2_joint25.usd"
+Lus2_Joint25_CFG.spawn.usd_path = f"{usd_dir_path}/lus2/usd/lus2_joint25.usd"
 
 Lus2_Joint27_CFG = Lus2_CFG.copy()
-Lus2_Joint27_CFG.spawn.usd_path = f"{usd_dir_path}/robots/lus2/usd/lus2_joint27.usd"
+Lus2_Joint27_CFG.spawn.usd_path = f"{usd_dir_path}/lus2/usd/lus2_joint27.usd"
 
 Lus2_Joint21_CFG = Lus2_CFG.copy()
-Lus2_Joint21_CFG.spawn.usd_path = f"{usd_dir_path}/robots/lus2/usd/lus2_joint21.usd"
+Lus2_Joint21_CFG.spawn.usd_path = f"{usd_dir_path}/lus2/usd/lus2_joint21.usd"
 Lus2_Joint21_CFG.init_state.joint_pos={
             ".*_hip_yaw_joint": 0.0,
             ".*_hip_roll_joint": 0.0,

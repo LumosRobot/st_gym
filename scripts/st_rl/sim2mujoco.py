@@ -127,22 +127,19 @@ def run_mujoco(env_cfg: DictConfig, agent_cfg:DictConfig):
         None
     """
     global control_mode, mj_sim_mode, base_velocity
-    env_cfg.ref_motion.motion_files = glob.glob("/home/thomas/workspace/lumos_ws/humanoid_demo_retarget/sources/data/motions/lus2_joint21/pkl/dance1_subject2_fps25.pkl")
-    #env_cfg.ref_motion.motion_files = glob.glob("/home/thomas/workspace/lumos_ws/humanoid_demo_retarget/sources/data/motions/lus2_joint21/pkl/B11*")
-    #env_cfg.ref_motion.motion_files = glob.glob("/home/thomas/workspace/lumos_ws/humanoid_demo_retarget/sources/data/motions/lus2_joint21/pkl/ji_ni*")
-    #env_cfg.ref_motion.motion_files = glob.glob("/home/thomas/workspace/lumos_ws/humanoid_demo_retarget/sources/data/motions/lus2_joint21/pkl/dance2_subject4*fps25.pkl")
-    if not os.path.isfile(env_cfg.ref_motion.motion_files[0]):
-        env_cfg.ref_motion.motion_files = glob.glob(os.path.join(os.getenv("HOME"),env_cfg.ref_motion.motion_files[0][env_cfg.ref_motion.motion_files[0].find("workspace"):]))
-    if len(env_cfg.ref_motion.motion_files) < 1:
-        #env_cfg.ref_motion.motion_files = glob.glob("/home/thomas/workspace/lumos_ws/humanoid_demo_retarget/sources/data/motions/lus2_joint21/pkl/dance2_subject4_1871_6771_fps25.pkl")
-        env_cfg.ref_motion.motion_files = glob.glob(f"{os.getenv('HOME')}/workspace/lumos_ws/humanoid_demo_retarget/sources/data/motions/lus2_joint21/pkl/*")
-        print(f"The ref motion for training do not exist, change to use {env_cfg.ref_motion.motion_files}")
+    #if not os.path.isfile(env_cfg.ref_motion.motion_files[0]):
+    #    env_cfg.ref_motion.motion_files = glob.glob(os.path.join(os.getenv("HOME"),env_cfg.ref_motion.motion_files[0][env_cfg.ref_motion.motion_files[0].find("workspace"):]))
+    #if len(env_cfg.ref_motion.motion_files) < 1:
+    #    #env_cfg.ref_motion.motion_files = glob.glob("/home/thomas/workspace/lumos_ws/humanoid_demo_retarget/sources/data/motions/lus2_joint21/pkl/dance2_subject4_1871_6771_fps25.pkl")
+    #    env_cfg.ref_motion.motion_files = glob.glob(f"{os.getenv('HOME')}/workspace/lumos_ws/humanoid_demo_retarget/sources/data/motions/lus2_joint21/pkl/*")
+    #    print(f"The ref motion for training do not exist, change to use {env_cfg.ref_motion.motion_files}")
 
-    logger.info(f"Ref motion path: {env_cfg.ref_motion.motion_files}")
+    env_cfg.ref_motion.motion_files = glob.glob(f"{os.getenv('HOME')}/workspace/lumos_ws/humanoid_demo_retarget/sources/data/motions/lus2_joint21/fit_motion/dance1_subject2_fps25.pkl")
+    logger.info(f"ref motion path: {env_cfg.ref_motion.motion_files}")
 
-    env_cfg.ref_motion.frame_begin = 80 #0 #175
+    env_cfg.ref_motion.frame_begin = 1#80 #0 #175
     env_cfg.ref_motion.frame_end = None #None #2650
-    env_cfg.ref_motion.ref_length_s= None #12.1+4
+    env_cfg.ref_motion.ref_length_s= None #None #12.1+4
     env_cfg.ref_motion.random_start = False
     env_cfg.ref_motion.random_start=False
     specify_init_values = {}

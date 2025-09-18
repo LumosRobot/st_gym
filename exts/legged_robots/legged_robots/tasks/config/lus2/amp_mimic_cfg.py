@@ -16,14 +16,9 @@ using_21_joint = True
 
 # 27 joints
 if not using_21_joint:
-    motion_files=glob.glob(os.getenv("HOME")+"/workspace/lumos_ws/humanoid_demo_retarget/data/lus2_joint27/pkl/Append_Select_S29_*")
-    motion_files=glob.glob(os.getenv("HOME")+"/workspace/lumos_ws/humanoid_demo_retarget/sources/data/motions/lus2_joint27/pkl/CMU_CMU_12_12_04_poses*")
     motion_files=glob.glob(os.getenv("HOME")+"/workspace/lumos_ws/humanoid_demo_retarget/sources/data/motions/lus2_joint21/pkl/CMU_CMU_07_07*_fps*.pkl")
 else:
     # 21 joints
-    motion_files=glob.glob(os.getenv("HOME")+"/workspace/lumos_ws/humanoid_demo_retarget/sources/data/motions/lus2_joint21/pkl/fallAndGetUp1_subject1_fps30.pkl")
-    motion_files=glob.glob(os.getenv("HOME")+"/workspace/lumos_ws/humanoid_demo_retarget/sources/data/motions/lus2_joint21/pkl/dance2_subject4_1871_6771_fps*.pkl")
-    motion_files=glob.glob(os.getenv("HOME")+"/workspace/lumos_ws/humanoid_demo_retarget/sources/data/motions/lus2_joint21/pkl/danc*_fps*.pkl")
     motion_files=glob.glob(os.getenv("HOME")+"/workspace/lumos_ws/humanoid_demo_retarget/sources/data/motions/lus2_joint21/pkl/CMU_CMU_07_07*.pkl")
 
 #motion_files=glob.glob(os.getenv("HOME")+"/workspace/lumos_ws/humanoid_demo_retarget/data/lus2_joint27/pkl/*")

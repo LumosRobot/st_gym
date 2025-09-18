@@ -1,0 +1,69 @@
+seed: 42
+device: cuda:0
+num_steps_per_env: 24
+max_iterations: 20000
+empirical_normalization: true
+policy:
+  class_name: AmpActorCriticRecurrent
+  init_noise_std: 0.8
+  actor_hidden_dims:
+  - 512
+  - 256
+  - 128
+  critic_hidden_dims:
+  - 512
+  - 256
+  - 128
+  activation: elu
+  rnn_type: lstm
+  teacher_ac_path: null
+  num_actor_obs: null
+  num_critic_obs: null
+  num_actions: null
+  encoder_component_names: null
+  critic_encoder_component_names: null
+  obs_segments: null
+  critic_obs_segments: null
+  amp_discriminator:
+    input_dim: 42
+    style_reward_coef: 1.0
+    discriminator_grad_pen: 10.0
+    hidden_dims:
+    - 512
+    - 512
+    - 512
+    task_reward_lerp: 0.8
+    amp_obs_dim: {}
+  mu_activation: null
+algorithm:
+  class_name: APPO
+  value_loss_coef: 1.0
+  use_clipped_value_loss: true
+  clip_param: 0.2
+  entropy_coef: 0.01
+  num_learning_epochs: 5
+  num_mini_batches: 4
+  learning_rate: 0.001
+  schedule: adaptive
+  gamma: 0.99
+  lam: 0.95
+  desired_kl: 0.01
+  max_grad_norm: 1.0
+  empirical_normalization: true
+  mimic_loss_coef: 0.001
+  discriminator_loss_coef: 1.0
+  amp_obs_dim: 42
+save_interval: 500
+experiment_name: lus2_flat
+run_name: ''
+logger: neptune
+neptune_project: lus2-rl
+wandb_project: isaaclab
+resume: true
+load_run: 2025-07-27_09-48-34
+load_checkpoint: model_.*.pt
+storage:
+  amp_obs_shape: !!python/tuple
+  - 42
+log_interval: 10
+runner_class_name: AmpPolicyRunner
