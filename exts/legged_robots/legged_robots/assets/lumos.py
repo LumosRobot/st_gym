@@ -162,109 +162,7 @@ def get_kpkd(motor_type):
 ##
 
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
-usd_dir_path = os.path.join(BASE_DIR, "../../../../../lumos_rl_gym/resources")
-
-Lus1_CFG = ArticulationCfg(
-    prim_path="{ENV_REGEX_NS}/Robot",
-    spawn=sim_utils.UsdFileCfg(
-        usd_path=f"{usd_dir_path}/robots/lus1_v5/usd/lus1.usd",
-        activate_contact_sensors=True,
-        rigid_props=sim_utils.RigidBodyPropertiesCfg(
-            disable_gravity=False,
-            retain_accelerations=False,
-            linear_damping=0.0,
-            angular_damping=0.0,
-            max_linear_velocity=1000.0,
-            max_angular_velocity=1000.0,
-            max_depenetration_velocity=1.0,
-        ),
-        articulation_props=sim_utils.ArticulationRootPropertiesCfg(
-            enabled_self_collisions=True, solver_position_iteration_count=4, solver_velocity_iteration_count=4
-        ),
-    ),
-    init_state=ArticulationCfg.InitialStateCfg(
-        pos=(0.0, 0.0, 1.05),
-        joint_pos={
-            ".*_hip_yaw_joint": 0.0,
-            ".*_hip_roll_joint": 0.0,
-            ".*_hip_pitch_joint": -0.0, #-0.3,
-            ".*_knee_joint": 0.0, #0.3,
-            ".*_ankle_pitch_joint": 0.0, #-0.18,
-            ".*_ankle_roll_joint": 0.0,
-            "torso_joint": 0.0,
-            ".*_shoulder_pitch_joint": 0.0, #0.2,
-            "left_shoulder_roll_joint": 0.0,
-            "right_shoulder_roll_joint": 0.0,
-            ".*_shoulder_yaw_joint": 0.0,
-            ".*_elbow_joint": 0.0, #-0.6, 
-            ".*_wrist.*": 0.0, #-0.6, 
-        },
-        joint_vel={".*": 0.0},
-    ),
-    soft_joint_pos_limit_factor=0.9,
-    actuators={
-        "legs": ImplicitActuatorCfg(
-            joint_names_expr=[".*_hip_yaw_joint", ".*_hip_roll_joint", ".*_hip_pitch_joint", ".*_knee_joint", "torso_joint"],
-            effort_limit_sim=300,
-            velocity_limit_sim=30.0,
-            stiffness={
-                ".*_hip_yaw_joint": 300.0, #150
-                ".*_hip_roll_joint": 300.0,
-                ".*_hip_pitch_joint": 350.0,
-                ".*_knee_joint": 350.0,
-                "torso_joint": 200.0,
-            },
-            damping={
-                ".*_hip_yaw_joint": 10.0,
-                ".*_hip_roll_joint": 10.0,
-                ".*_hip_pitch_joint": 15.0,
-                ".*_knee_joint": 15.0,
-                "torso_joint": 10.0,
-            },
-        ),
-        "feet": ImplicitActuatorCfg(
-            joint_names_expr=[".*_ankle_roll_joint",".*_ankle_pitch_joint"],
-            effort_limit_sim=100,
-            velocity_limit_sim=20.0,
-            stiffness={".*_ankle_.*_joint": 80.0},
-            damping={".*_ankle_.*_joint": 2.0},
-        ),
-        "arms": ImplicitActuatorCfg(
-            joint_names_expr=[".*_shoulder_pitch_joint", ".*_shoulder_roll_joint", ".*_shoulder_yaw_joint", ".*_elbow_joint"],
-            effort_limit_sim=100,
-            velocity_limit_sim=20.0,
-            stiffness={
-                ".*_shoulder_pitch_joint": 40.0,
-                ".*_shoulder_roll_joint": 40.0,
-                ".*_shoulder_yaw_joint": 40.0,
-                ".*_elbow_joint": 40.0,
-            },
-            damping={
-                ".*_shoulder_pitch_joint": 10.0,
-                ".*_shoulder_roll_joint": 10.0,
-                ".*_shoulder_yaw_joint": 10.0,
-                ".*_elbow_joint": 10.0,
-            },
-        ),
-
-        "wrist": ImplicitActuatorCfg(
-            joint_names_expr=[".*_wrist_.*_joint"],
-            effort_limit_sim=20,
-            velocity_limit_sim=15.0,
-            stiffness={
-                ".*_wrist_.*_joint": 20.0,
-            },
-            damping={
-                ".*_wrist_.*_joint": 5,
-            },
-        ),
-    },
-)
-"""Configuration for the Kepler Lus1 Humanoid robot."""
-
-
-Lus1_Joint25_CFG = Lus1_CFG.copy()
-Lus1_Joint25_CFG.spawn.usd_path = f"{usd_dir_path}/robots/lus1_v5/usd/lus1_joint25.usd"
+usd_dir_path = os.path.join(BASE_DIR, "../../../../../robot_models/")
 
 Lus2_CFG = ArticulationCfg(
     spawn=sim_utils.UsdFileCfg(
@@ -661,4 +559,5 @@ calculator = ActionScaleCalculator(scale_factor=0.25)
 Lus2_joint21_ACTION_SCALE = calculator.calculate(Lus2_Joint21_CFG)
 Lus2_joint27_ACTION_SCALE = calculator.calculate(Lus2_Joint27_CFG)
 Lusl1_joint21_ACTION_SCALE = calculator.calculate(Lusl1_CFG)
+
 
