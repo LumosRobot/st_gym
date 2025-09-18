@@ -102,8 +102,8 @@ class Lus2RoughPPORunnerCfg(StRlOnPolicyRunnerCfg):
 
     # log configs
     log_interval = 10
-    logger="neptune"
-    #logger="tensorboard"
+    # logger="neptune"
+    logger="tensorboard"
     neptune_project="lus2-rl"
 
     def __post_init__(self):
