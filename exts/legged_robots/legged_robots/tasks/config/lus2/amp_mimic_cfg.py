@@ -16,12 +16,12 @@ using_21_joint = True
 
 # 27 joints
 if not using_21_joint:
-    motion_files=glob.glob(os.getenv("HOME")+"/workspace/lumos_ws/humanoid_demo_retarget/sources/data/motions/lus2_joint21/pkl/CMU_CMU_07_07*_fps*.pkl")
+    motion_files=glob.glob(os.getenv("HOME")+"/workspace/lumos_ws/humanoid_demo_retarget/sources/data/motions/lus2_joint21/pkl/CMU_CMU_13_13*_fps*.pkl")
 else:
     # 21 joints
-    motion_files=glob.glob(os.getenv("HOME")+"/workspace/lumos_ws/humanoid_demo_retarget/sources/data/motions/lus2_joint21/pkl/CMU_CMU_07_07*.pkl")
+    motion_files=glob.glob(os.getenv("HOME")+"/workspace/lumos_ws/humanoid_demo_retarget/sources/data/motions/lus2_joint21/pkl/CMU_CMU_13_13*.pkl")
 
-#motion_files=glob.glob(os.getenv("HOME")+"/workspace/lumos_ws/humanoid_demo_retarget/data/lus2_joint27/pkl/*")
+
 random_start=True
 amp_obs_frame_num = 2 # minimal is 1, no history amp obs
 

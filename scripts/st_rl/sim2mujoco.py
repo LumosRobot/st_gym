@@ -134,7 +134,7 @@ def run_mujoco(env_cfg: DictConfig, agent_cfg:DictConfig):
     #    env_cfg.ref_motion.motion_files = glob.glob(f"{os.getenv('HOME')}/workspace/lumos_ws/humanoid_demo_retarget/sources/data/motions/lus2_joint21/pkl/*")
     #    print(f"The ref motion for training do not exist, change to use {env_cfg.ref_motion.motion_files}")
 
-    env_cfg.ref_motion.motion_files = glob.glob(f"{os.getenv('HOME')}/workspace/lumos_ws/humanoid_demo_retarget/sources/data/motions/lus2_joint21/fit_motion/dance1_subject2_fps25.pkl")
+    env_cfg.ref_motion.motion_files = glob.glob(f"{os.getenv('HOME')}/workspace/lumos_ws/humanoid_demo_retarget/sources/data/motions/lus2_joint21/pkl/dance1_subject2_fps25.pkl")
     logger.info(f"ref motion path: {env_cfg.ref_motion.motion_files}")
 
     env_cfg.ref_motion.frame_begin = 1#80 #0 #175
