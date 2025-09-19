@@ -1,6 +1,8 @@
 #!/usr/bin/bash
 #config: --utf-8
 
+export PYTHONPATH=$(pwd):$(pwd)/third_party:$(pwd)/third_party/refmotion_manager:$PYTHONPATH
+
 load_run=""
 task_name="Flat-Lus2"
 experiment_name="lus2_flat"
